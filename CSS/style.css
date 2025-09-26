@@ -23,7 +23,7 @@ body {
   position: fixed;
   width: 100%;
   top: 0;
-  z-index: 100;
+  z-index: 9999;
   backdrop-filter: blur(10px);
 }
 
@@ -40,6 +40,13 @@ body {
   gap: 1.5rem;
   list-style: none;
 }
+
+.nav-links.show {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .nav-links a {
   text-decoration: none;
   color: #fff;
@@ -155,11 +162,11 @@ background-color: #18181B;
   line-height: 1.8;
 }
 
-/* Skills (Beam Layout) - PERBAIKAN */
+/* Skills (Beam Layout) */
+/* ===== SKILLS SECTION ===== */
 .skills-section {
   padding: 100px 20px;
   background: #18181B;
-  color: E4E4E7;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -197,7 +204,8 @@ background-color: #18181B;
   box-shadow: 0 0 20px #303030;
 }
 
-.icon {
+/* ICON BASE STYLES */
+.skill-container .icon {
   position: absolute;
   width: 60px;
   height: 60px;
@@ -212,17 +220,18 @@ background-color: #18181B;
   transition: transform 0.3s ease;
 }
 
-.icon:hover {
+.skill-container .icon:hover {
   transform: scale(1.1);
 }
 
-.icon img {
+.skill-container .icon img {
   width: 60%;
   height: 60%;
   object-fit: contain;
 }
 
-svg {
+/* SVG BEAMS */
+.skill-container svg {
   position: absolute;
   top: 0;
   left: 0;
@@ -231,13 +240,13 @@ svg {
   z-index: 1;
 }
 
-path {
+.skill-container path {
   stroke: #444;
   stroke-width: 2;
   fill: none;
 }
 
-.beam {
+.skill-container .beam {
   stroke: #bf00ff;
   stroke-width: 2;
   stroke-dasharray: 10 50;
@@ -247,6 +256,125 @@ path {
 @keyframes dashmove {
   to {
     stroke-dashoffset: -1000;
+  }
+}
+
+/* ===== DESKTOP POSITIONING - FIXED ===== */
+/* KIRI */
+.skill-container .icon:nth-child(2) { 
+  top: 10%; 
+  left: 1%; 
+}
+
+.skill-container .icon:nth-child(3) { 
+  top: 27%; 
+  left: 1%; 
+}
+
+.skill-container .icon:nth-child(4) { 
+  top: 43%; 
+  left: 1%; 
+}
+
+.skill-container .icon:nth-child(5) { 
+  bottom: 27%; 
+  left: 1%; 
+}
+
+.skill-container .icon:nth-child(6) { 
+  bottom: 10%; 
+  left: 1%; 
+}
+
+/* KANAN */
+.skill-container .icon:nth-child(7) { 
+  top: 10%; 
+  right: 1%; 
+}
+
+.skill-container .icon:nth-child(8) { 
+  top: 27%; 
+  right: 1%; 
+}
+
+.skill-container .icon:nth-child(9) { 
+  top: 43%; 
+  right: 1%; 
+}
+
+.skill-container .icon:nth-child(10) { 
+  bottom: 28%; 
+  right: 1%; 
+}
+
+.skill-container .icon:nth-child(11) { 
+  bottom: 10%; 
+  right: 1%; 
+}
+
+/* ===== MOBILE LAYOUT ===== */
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 80px 15px;
+    min-height: auto;
+  }
+  
+  .skill-container {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: auto !important;
+    width: 100% !important;
+    min-height: 300px;
+    padding: 30px 15px;
+    gap: 15px;
+  }
+  
+  .center {
+    position: static !important;
+    transform: none !important;
+    margin: 0 0 20px 0;
+    width: 70px;
+    height: 70px;
+    order: -1;
+    flex-basis: 100%;
+    text-align: center;
+  }
+  
+  .skill-container .icon {
+    position: static !important;
+    margin: 0 !important;
+    width: 60px;
+    height: 60px;
+    flex: 0 0 auto;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+  }
+  
+  /* Sembunyikan SVG beams di mobile */
+  .skill-container svg {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .skill-container {
+    gap: 12px;
+    padding: 25px 10px;
+  }
+  
+  .skill-container .icon {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .center {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
   }
 }
 
@@ -556,36 +684,7 @@ path {
   }
 }
 
-/* Mobile-specific adjustments for beams */
-@media (max-width: 768px) {
-  svg {
-    display: none; /* Sembunyikan beams di mobile untuk tampilan lebih bersih */
-  }
-  
-  .icon {
-    position: static;
-    display: inline-block;
-    margin: 10px;
-  }
-  
-  .skill-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    padding: 20px 0;
-  }
-  
-  .center {
-    position: static;
-    transform: none;
-    margin: 20px;
-    order: -1;
-    width: 80px;
-    height: 80px;
-  }
-}
+
 
 /* Animation untuk home section */
 .animate-text {

@@ -6,6 +6,16 @@
           navLinks.classList.toggle('show');
         });
 
+        // Navbar scroll effect
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
         // Smooth scroll on nav click
         document.querySelectorAll('.nav-links a').forEach(link => {
           link.addEventListener('click', e => {
@@ -43,3 +53,5 @@
       alert('Thank you for your message! I will get back to you soon.');
       this.reset();
     });
+
+    
